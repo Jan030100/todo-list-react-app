@@ -1,93 +1,388 @@
-/* Overall app container */
-.app {
-  max-width: 500px;
-  margin: 0 auto;
+/* Updated CSS for wider, more spacious Todo List */
+
+/* Import Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: #f9f9f9;
+}
+
+/* Overall app container - MADE WIDER */
+.app {
+  max-width: 900px; /* Increased from 600px */
+  margin: 0 auto;
+  padding: 40px; /* Increased padding */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* App title */
 h1 {
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  color: #2d3748;
+  margin-bottom: 40px; /* Increased margin */
+  font-size: 2.5rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Form styling */
+/* Form styling - IMPROVED SPACING */
 form {
-  display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Increased margin */
 }
 
-input {
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Increased gap */
+  background: white;
+  padding: 12px; /* Increased padding */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+input[type="text"] {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px 0 0 4px;
+  padding: 14px 18px; /* Increased padding */
+  border: none;
+  border-radius: 8px;
   font-size: 16px;
+  background: #f8fafc;
+  color: #2d3748;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input[type="text"]::placeholder {
+  color: #a0aec0;
+}
+
+.category-select, .priority-select {
+  min-width: 140px; /* Increased width */
+  padding: 14px 18px; /* Increased padding */
+  border: none;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #2d3748;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-select:focus, .priority-select:focus {
+  outline: none;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 form button {
-  padding: 10px 15px;
-  background-color: #4caf50;
+  padding: 14px 24px; /* Increased padding */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 120px; /* Added min-width */
 }
 
 form button:hover {
-  background-color: #45a049;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+}
+
+form button:active {
+  transform: translateY(0);
 }
 
 /* Todo list styling */
 .todo-list {
-  background-color: white;
-  border-radius: 4px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 16px;
+  padding: 30px; /* Increased padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-/* List item styling with grid layout */
+/* List item styling - IMPROVED LAYOUT */
 li {
   display: grid;
-  grid-template-columns: 40px 1fr auto;
+  grid-template-columns: 40px 1fr auto auto auto; /* Added extra column */
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  padding: 20px; /* Increased padding */
+  margin-bottom: 12px; /* Increased margin */
+  border-radius: 12px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  gap: 16px; /* Increased gap */
+  border-left: 4px solid #e2e8f0;
+}
+
+li:hover {
+  background: #f1f5f9;
+  transform: translateX(4px);
 }
 
 li:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
-/* Make checkboxes bigger */
+/* Enhanced category-based styling */
+li[style*="4a90e2"] {
+  border-left-color: #4a90e2 !important;
+  background: linear-gradient(90deg, rgba(74, 144, 226, 0.05) 0%, #f8fafc 100%);
+}
+
+li[style*="50e3c2"] {
+  border-left-color: #50e3c2 !important;
+  background: linear-gradient(90deg, rgba(80, 227, 194, 0.05) 0%, #f8fafc 100%);
+}
+
+li[style*="e6a23c"] {
+  border-left-color: #e6a23c !important;
+  background: linear-gradient(90deg, rgba(230, 162, 60, 0.05) 0%, #f8fafc 100%);
+}
+
+li[style*="f56c6c"] {
+  border-left-color: #f56c6c !important;
+  background: linear-gradient(90deg, rgba(245, 108, 108, 0.05) 0%, #f8fafc 100%);
+}
+
+li[style*="909399"] {
+  border-left-color: #909399 !important;
+  background: linear-gradient(90deg, rgba(144, 147, 153, 0.05) 0%, #f8fafc 100%);
+}
+
+/* Checkbox styling */
 li input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
-  margin-right: 10px;
+  width: 22px; /* Slightly larger */
+  height: 22px;
+  min-width: 22px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #667eea;
 }
 
-/* Delete button */
+/* Task text styling */
+li span:first-of-type {
+  font-size: 16px;
+  color: #2d3748;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-right: 16px; /* Added margin */
+}
+
+/* Category tag styling - IMPROVED */
+.category-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px; /* Increased padding */
+  border-radius: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+  white-space: nowrap;
+}
+
+/* Priority tag styling - IMPROVED */
+.priority-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px; /* Increased padding */
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  min-width: 60px; /* Added min-width */
+  text-align: center;
+}
+
+/* Delete button styling - IMPROVED */
 li button {
-  padding: 5px 10px;
-  background-color: #f44336;
+  padding: 10px 16px; /* Increased padding */
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 80px; /* Added min-width */
 }
 
 li button:hover {
-  background-color: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+}
+
+li button:active {
+  transform: translateY(0);
+}
+
+/* Completed task styling */
+li span[style*="line-through"] {
+  color: #a0aec0;
+  opacity: 0.7;
+}
+
+/* Responsive design - IMPROVED */
+@media (max-width: 768px) {
+  .app {
+    margin: 10px;
+    padding: 25px;
+    max-width: 95%;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  input[type="text"], .category-select, .priority-select {
+    width: 100%;
+  }
+  
+  li {
+    grid-template-columns: 30px 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 12px;
+  }
+  
+  .category-tag, .priority-tag, li button {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 8px;
+  }
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+li {
+  animation: fadeIn 0.3s ease;
+}
+
+/* Focus styles for accessibility */
+input:focus, select:focus, button:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* Date picker styling */
+.date-picker {
+  min-width: 140px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #2d3748;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-picker:focus {
+  outline: none;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Due date tag styling */
+.due-date-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Update the grid layout for the new due date column */
+li {
+  display: grid;
+  grid-template-columns: 40px 1fr auto auto auto auto; /* Added extra column for due date */
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  gap: 16px;
+  border-left: 4px solid #e2e8f0;
 }
